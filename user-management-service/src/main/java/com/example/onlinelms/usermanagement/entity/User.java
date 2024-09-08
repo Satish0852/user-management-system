@@ -4,13 +4,12 @@ package com.example.onlinelms.usermanagement.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,14 +17,12 @@ import jakarta.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID")
 	private Long id;
-
 	private String userName;
 	private String password;
 	private String email;
-
-	@ManyToMany(fetch=FetchType.EAGER)
+	
+	@OneToMany(fetch=FetchType.EAGER)
 	private Set<UserRoles> roles=new HashSet<>();
 	
 	public User() {
